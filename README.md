@@ -16,7 +16,7 @@ This node requires configuration. You need have a account in meaningcloud to pro
 ## Example of action configuration
 
 ```json
-{'key': '71d83e0a2ee2b68d57bf2f8fe752d73b',
+{'key': 'your key',
     'string': """Welcome aboard
         Please pay attention as we demonstrate
         The safety features of this aircraft"""
