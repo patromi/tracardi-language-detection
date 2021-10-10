@@ -57,7 +57,9 @@ def register() -> Plugin:
             version='0.1',
             license="MIT",
             author="Patryk Migaj",
-            init={}
+            init={"string": None,
+                  "key": None,
+                  "timeout": 15}
         ),
         metadata=MetaData(
             name='tracardi-language-detection',
