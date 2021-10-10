@@ -8,7 +8,7 @@ from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 from tracardi_language_detection.plugin import DetectAction
 
 init = payload={
-    'key': '71d83e0a2ee2b68d57bf2f8fe752d73b',
+    'key': 'YOUR KEY',
     'string': """Welcome aboard
         Please pay attention as we demonstrate
         The safety features of this aircraft"""
