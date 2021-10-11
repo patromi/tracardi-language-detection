@@ -9,7 +9,7 @@ This node requires configuration. You need have a account in meaningcloud to pro
 ## Message configuration
 
 * string: None, - Enter your message
-* key: None, - Enter your Key you can find this on https://www.meaningcloud.com/developer/account/subscriptions
+* key: None, - Enter your Key you can find it on https://www.meaningcloud.com/developer/account/subscriptions
 * timeout: 15
 
 
