@@ -1,7 +1,12 @@
 from pydantic import BaseModel
+from tracardi.domain.entity import Entity
 
 
-class Configuration(BaseModel):
+class Data(BaseModel):
     string: str
     key: str
     timeout: int = 15
+
+
+class Config(BaseModel):
+    source: Entity
