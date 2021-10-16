@@ -10,16 +10,19 @@ This node requires configuration. You need have a account in meaningcloud to pro
 
 * string: None, - Enter your message
 * key: None, - Enter your Key you can find it on https://www.meaningcloud.com/developer/account/subscriptions
-* timeout: 15
 
 
 ## Example of action configuration
 
 ```json
-        {
-        "key": "your key",
-        "string": "Welcome aboard Please pay attention as we demonstrate t he safety features of this aircraft"
-        }
+        {"source": {
+                "id": None
+            },
+                "message": {"message": """Welcome aboard
+        Please pay attention as we demonstrate
+        The safety features of this aircraft"""},
+                "key": {"key": YOUR KEY
+                        }}
 ```
 
 
