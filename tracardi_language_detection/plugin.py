@@ -1,10 +1,14 @@
 from tracardi_dot_notation.dot_accessor import DotAccessor
 from tracardi_dot_notation.dot_template import DotTemplate
 from tracardi_plugin_sdk.action_runner import ActionRunner
-from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData
-from tracardi_language_detection.model.configuration import Message, Key, Configuration
+from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData, Form, FormGroup, FormField, FormComponent
+from tracardi_language_detection.model.configuration import Key, Configuration
 from tracardi.service.storage.driver import storage
 from tracardi_language_detection.service.sendman import PostMan
+
+
+def validate(config: dict):
+    return Configuration(**config)
 
 
 class DetectAction(ActionRunner):
@@ -12,14 +16,16 @@ class DetectAction(ActionRunner):
     @staticmethod
     async def build(**kwargs) -> 'DetectAction':
 
-        # This reads key
-        config = Configuration(**kwargs)
+        # This reads config
+        config = validate(kwargs)
+
+        # This reads resource
         source = await storage.driver.resource.load(config.source.id)
 
-        return DetectAction(Message(**kwargs), Key(**source.config))
+        return DetectAction(config.message, Key(**source.config))
 
-    def __init__(self, message: Message, key: Key):
-        self.message = message.message
+    def __init__(self, message: str, key: Key):
+        self.message = message
         self.postman = PostMan(key.token)
 
     async def run(self, payload):
@@ -46,6 +52,29 @@ def register() -> Plugin:
                 },
                 "message": "Hello world"
             },
+            form=Form(groups=[
+                FormGroup(
+                    fields=[
+                        FormField(
+                            id="source",
+                            name="Token resource",
+                            description="Select resource that have API token.",
+                            component=FormComponent(type="resource", props={"label": "resource"})
+                        )
+                    ]
+                ),
+                FormGroup(
+                    fields=[
+                        FormField(
+                            id="message",
+                            name="Text",
+                            description="Type text or path to text to be detected.",
+                            component=FormComponent(type="textarea", props={"label": "template"})
+                        )
+                    ]
+                )
+                ]
+            ),
             metadata=MetaData(
                 name='tracardi-language-detection',
                 desc='This plugin detect language from given string with meaningcloud API',
