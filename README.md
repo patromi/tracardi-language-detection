@@ -16,7 +16,7 @@ This node requires configuration. You need have a account in meaningcloud to pro
 
 ```json
         {"source": {
-                "id": "None",
+                "id": "55584df6-9ee3-4acd-a0ea-e555122f3dbc",
             },
                 "message": {"message": """Welcome aboard
         Please pay attention as we demonstrate
