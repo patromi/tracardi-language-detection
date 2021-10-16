@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 from tracardi_language_detection.plugin import DetectAction
 
 load_dotenv()
-print()
 init = payload = {'source': {
     'id': '55584df6-9ee3-4acd-a0ea-e555122f3dbc'
 },
