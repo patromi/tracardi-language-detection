@@ -6,14 +6,14 @@ from tracardi.domain.session import Session
 from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 
 from tracardi_language_detection.plugin import DetectAction
-init = payload = {'source': {
-    'id': '55584df6-9ee3-4acd-a0ea-e555122f3dbc'
-},
-    "message": {"message": """Welcome aboard
-        Please pay attention as we demonstrate
-        The safety features of this aircraft"""},
-    "key": {"key": None
-            }}
+
+init = payload = {
+    'source': {
+        'id': '32ccc6e3-0084-4989-8ce2-edd35d888f29'
+    },
+    "message": """Welcome aboard Please pay attention as we demonstrate The safety features of 
+                     this aircraft""",
+    }
 
 payload = {}
 profile = Profile(id="profile-id")

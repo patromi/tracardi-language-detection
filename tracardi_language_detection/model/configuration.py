@@ -7,8 +7,8 @@ class Message(BaseModel):
 
 
 class Key(BaseModel):
-    key: str
+    token: str
 
 
-class Config(BaseModel):
+class Configuration(BaseModel):
     source: Entity
