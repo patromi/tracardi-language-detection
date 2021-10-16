@@ -1,10 +1,6 @@
-import asyncio
-import aiohttp
-from aiohttp import ClientConnectorError
 from tracardi_dot_notation.dot_accessor import DotAccessor
 from tracardi_plugin_sdk.action_runner import ActionRunner
 from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData
-from tracardi_plugin_sdk.domain.result import Result
 from tracardi_language_detection.model.configuration import Data, Config
 from tracardi.service.storage.driver import storage
 from tracardi.domain.resource import Resource
