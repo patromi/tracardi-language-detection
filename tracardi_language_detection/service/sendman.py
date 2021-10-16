@@ -6,15 +6,15 @@ from tracardi_plugin_sdk.domain.result import Result
 
 
 class PostMan():
-    def __init__(self, config):
-        self.config = config
+    def __init__(self, key):
+        self.key = key
 
     async def send(self, string):
         try:
-            timeout = aiohttp.ClientTimeout(total=self.config.timeout)
+            timeout = aiohttp.ClientTimeout(total=15)
             async with aiohttp.ClientSession(timeout=timeout) as session:
                 params = {
-                    'key': self.config.key,
+                    'key': self.key,
                     'txt': string
                 }
                 async with session.request(

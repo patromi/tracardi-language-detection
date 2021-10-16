@@ -1,7 +1,7 @@
 from tracardi_dot_notation.dot_accessor import DotAccessor
 from tracardi_plugin_sdk.action_runner import ActionRunner
 from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData
-from tracardi_language_detection.model.configuration import Data, Config
+from tracardi_language_detection.model.configuration import Message, Config, Key
 from tracardi.service.storage.driver import storage
 from tracardi.domain.resource import Resource
 from tracardi_language_detection.service.sendman import PostMan
@@ -12,24 +12,22 @@ class DetectAction(ActionRunner):
     @staticmethod
     async def build(**kwargs) -> 'DetectAction':
         config = Config(**kwargs)
-        data = Data(**kwargs["data"])
+        message = Message(**kwargs["message"])
+        key = Key(**kwargs["key"])
         source = await storage.driver.resource.load(config.source.id)
-        source.config = {
-            "string": data.string,
-            "key": data.key,
-            "timeout": 15}
-        plugin = DetectAction(source)
+        source.config = key.dict()
+        plugin = DetectAction(message, source)
         return plugin
 
-    def __init__(self, source: Resource):
+    def __init__(self, message: Message, source: Resource):
+        self.message = message
         self.source = source
-        self.sendman = PostMan(Data(**source.config))
+        self.sendman = PostMan(source.config["key"])
 
     async def run(self, payload):
         dot = DotAccessor(self.profile, self.session, payload, self.event, self.flow)
-        string = dot[self.source.config["string"]]
-        postman = await self.sendman.send(string)
-        return postman
+        string = dot[self.message]
+        return await self.sendman.send(string)
 
 
 def register() -> Plugin:
@@ -44,21 +42,20 @@ def register() -> Plugin:
             license="MIT",
             author="Patryk Migaj",
             init={'source': {
-                'id': 'cde09c91-9ae4-4bdc-ab58-ced3ab4e441a'
+                'id': None
             },
-                "configuation": {
-                    "string": None,
-                    "key": None,
-                    "timeout": 15}
-            }
-        ),
-        metadata=MetaData(
-            name='tracardi-language-detection',
-            desc='This plugin detect language from given string with meaningcloud API',
-            type='flowNode',
-            width=200,
-            height=100,
-            icon='icon',
-            group=["General"]
-        )
-    )
+                "message": {"message": """Welcome aboard
+        Please pay attention as we demonstrate
+        The safety features of this aircraft"""},
+                "key": {"key": None
+                        }},
+            metadata=MetaData(
+                name='tracardi-language-detection',
+                desc='This plugin detect language from given string with meaningcloud API',
+                type='flowNode',
+                width=200,
+                height=100,
+                icon='icon',
+                group=["General"]
+            )
+        ))
