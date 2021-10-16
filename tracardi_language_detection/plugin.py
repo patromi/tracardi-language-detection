@@ -76,7 +76,7 @@ def register() -> Plugin:
             )
         ),
         metadata=MetaData(
-            name='tracardi-language-detection',
+            name='Language detection',
             desc='This plugin detect language from given string with meaningcloud API',
             type='flowNode',
             width=200,
