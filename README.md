@@ -7,19 +7,22 @@ The purpose of this plugin is  detect language from given string with meaningclo
 This node requires configuration. You need have a account in meaningcloud to provide your API https://www.meaningcloud.com/
 
 ## Message configuration
-
-* string: None, - Enter your message
+* id - Enter your resource id
+* message: None, - Enter your message
 * key: None, - Enter your Key you can find it on https://www.meaningcloud.com/developer/account/subscriptions
-* timeout: 15
 
 
 ## Example of action configuration
 
 ```json
-        {
-        "key": "your key",
-        "string": "Welcome aboard Please pay attention as we demonstrate t he safety features of this aircraft"
-        }
+        {"source": {
+                "id": "55584df6-9ee3-4acd-a0ea-e555122f3dbc",
+            },
+                "message": {"message": """Welcome aboard
+        Please pay attention as we demonstrate
+        The safety features of this aircraft"""},
+                "key": {"key": "YOUR KEY"
+                        }}
 ```
 
 
