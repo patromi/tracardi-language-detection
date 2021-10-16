@@ -15,19 +15,17 @@ class DetectAction(ActionRunner):
 
     @staticmethod
     async def build(**kwargs) -> 'DetectAction':
-        print(kwargs['data'])
         config = Config(**kwargs)
-        data = Data(string=kwargs['data']['string'],key=kwargs['data']['key'])
+        data = Data(string=kwargs['data']['string'], key=kwargs['data']['key'])
         source = await storage.driver.resource.load(config.source.id)
         source.config = {
             "string": data.string,
             "key": data.key,
             "timeout": 15}
-        plugin = DetectAction(config, source)
+        plugin = DetectAction(source)
         return plugin
 
-    def __init__(self, config: Config, source: Resource):
-        self.config = config
+    def __init__(self, source: Resource):
         self.source = source
         self.sendman = PostMan(Data(**source.config))
 
