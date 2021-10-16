@@ -59,8 +59,8 @@ def register() -> Plugin:
             module='tracardi_language_detection.plugin',
             className='LanguageDetectAction',
             inputs=["payload"],
-            outputs=['payload'],
-            version='0.1.4',
+            outputs=['response', 'error'],
+            version='0.1.5',
             license="MIT",
             author="Patryk Migaj",
             init={
@@ -78,6 +78,12 @@ def register() -> Plugin:
                             name="Token resource",
                             description="Select resource that have API token.",
                             component=FormComponent(type="resource", props={"label": "resource"})
+                        ),
+                        FormField(
+                            id="timeout",
+                            name="Service time-out",
+                            description="Type when to time out if service unavailable.",
+                            component=FormComponent(type="text", props={"label": "time-out"})
                         )
                     ]
                 ),
