@@ -7,8 +7,8 @@ The purpose of this plugin is  detect language from given string with meaningclo
 This node requires configuration. You need have a account in meaningcloud to provide your API https://www.meaningcloud.com/
 
 ## Message configuration
-
-* string: None, - Enter your message
+* id - Enter your event id
+* message: None, - Enter your message
 * key: None, - Enter your Key you can find it on https://www.meaningcloud.com/developer/account/subscriptions
 
 
