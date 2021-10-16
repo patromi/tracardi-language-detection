@@ -4,11 +4,8 @@ from tracardi.domain.event import Event
 from tracardi.domain.profile import Profile
 from tracardi.domain.session import Session
 from tracardi_plugin_sdk.service.plugin_runner import run_plugin
-from dotenv import load_dotenv
 
 from tracardi_language_detection.plugin import DetectAction
-
-load_dotenv()
 init = payload = {'source': {
     'id': '55584df6-9ee3-4acd-a0ea-e555122f3dbc'
 },
