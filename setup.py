@@ -13,8 +13,8 @@ setup(
     author_email='patromi123@gmail.com',
     packages=['tracardi_language_detection'],
     install_requires=[
-        'tracardi-plugin-sdk',
-        'tracardi'
+        'tracardi-plugin-sdk>=0.6.21',
+        'tracardi>=0.6.18,<0.7.0'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
