@@ -12,7 +12,7 @@ class DetectAction(ActionRunner):
     @staticmethod
     async def build(**kwargs) -> 'DetectAction':
         config = Config(**kwargs)
-        data = Data(string=kwargs['data']['string'], key=kwargs['data']['key'])
+        data = Data(**kwargs["data"])
         source = await storage.driver.resource.load(config.source.id)
         source.config = {
             "string": data.string,
