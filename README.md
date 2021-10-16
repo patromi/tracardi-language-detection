@@ -16,12 +16,12 @@ This node requires configuration. You need have a account in meaningcloud to pro
 
 ```json
         {"source": {
-                "id": None
+                "id": "None",
             },
                 "message": {"message": """Welcome aboard
         Please pay attention as we demonstrate
         The safety features of this aircraft"""},
-                "key": {"key": YOUR KEY
+                "key": {"key": "YOUR KEY"
                         }}
 ```
 
