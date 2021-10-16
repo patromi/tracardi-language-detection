@@ -82,6 +82,6 @@ def register() -> Plugin:
             width=200,
             height=100,
             icon='language',
-            group=["General"]
+            group=["Language"]
         )
     )
