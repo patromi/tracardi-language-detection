@@ -15,7 +15,6 @@ class DetectAction(ActionRunner):
 
     @staticmethod
     async def build(**kwargs) -> 'DetectAction':
-
         # This reads config
         config = validate(kwargs)
 
@@ -43,7 +42,7 @@ def register() -> Plugin:
             className='DetectAction',
             inputs=["payload"],
             outputs=['payload'],
-            version='0.1',
+            version='0.1.1',
             license="MIT",
             author="Patryk Migaj",
             init={
@@ -73,15 +72,16 @@ def register() -> Plugin:
                         )
                     ]
                 )
-                ]
-            ),
-            metadata=MetaData(
-                name='tracardi-language-detection',
-                desc='This plugin detect language from given string with meaningcloud API',
-                type='flowNode',
-                width=200,
-                height=100,
-                icon='icon',
-                group=["General"]
+            ]
             )
-        ))
+        ),
+        metadata=MetaData(
+            name='tracardi-language-detection',
+            desc='This plugin detect language from given string with meaningcloud API',
+            type='flowNode',
+            width=200,
+            height=100,
+            icon='icon',
+            group=["General"]
+        )
+    )
