@@ -18,9 +18,9 @@ This node requires configuration. You need have a account in meaningcloud to pro
         {"source": {
                 "id": "55584df6-9ee3-4acd-a0ea-e555122f3dbc",
             },
-                "message": {"message": """Welcome aboard
+                "message": {"message": "Welcome aboard
         Please pay attention as we demonstrate
-        The safety features of this aircraft"""},
+        The safety features of this aircraft"},
                 "key": {"key": "YOUR KEY"
                         }}
 ```
